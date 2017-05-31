@@ -146,6 +146,94 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Kotlin学习笔记二" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/21/Kotlin学习笔记二/">Kotlin学习笔记二</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/21/Kotlin学习笔记二/" class="archive-article-date">
+  	<time datetime="2017-05-21T02:43:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="属性和字段"><a href="#属性和字段" class="headerlink" title="属性和字段"></a>属性和字段</h3><h5 id="属性声明"><a href="#属性声明" class="headerlink" title="属性声明"></a>属性声明</h5><p>官方文档有这样一段话</p>
+<blockquote>
+<p>其初始器（initializer）、getter 和 setter 都是可选的。属性类型如果可以从初始器 （或者从其 getter 返回值，如下文所示）中推断出来，也可以省略。<br>例如:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> allByDefault: <span class="built_in">Int</span>? <span class="comment">// 错误：需要显式初始化器，隐含默认 getter 和 setter</span></div><div class="line">...</div><div class="line"><span class="keyword">val</span> simple: <span class="built_in">Int</span>? <span class="comment">// 类型 Int、默认 getter、必须在构造函数中初始化</span></div><div class="line">...</div></pre></td></tr></table></figure>
+</blockquote>
+<p>附带的实例代码让我以为<figure class="highlight plain"><figcaption><span>simple: Int?```这种写法是正确的，**val**与**var**在声明中由于**Getter与Setter**的不同导致声明方式存在差异。但是实际上不是这样的。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">在类的声明中以上两种写法均无法通过编译。</div><div class="line"></div><div class="line">``` kotlin</div><div class="line">class Person constructor()&#123;</div><div class="line">    var name: String?</div><div class="line">    val age : Int?</div><div class="line">    init&#123;</div><div class="line">        name = &quot;名字&quot;</div><div class="line">        age = 7</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果不为属性直接指定值<code>var name = &quot;名字&quot;</code>那么就要在<code>init</code>中进行初始化。</p>
+<p>我们也可以为属性添加<code>lateinit</code>修饰符使空属性避免初始化</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">constructor</span></span>()&#123;</div><div class="line">    <span class="keyword">lateinit</span> <span class="keyword">var</span> name : String</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面代码可以通过编译，但是这里的<code>p</code>不能是原生类型如<code>Int</code>，并且只能是<code>var</code>属性。</p>
+<h5 id="幕后字段"><a href="#幕后字段" class="headerlink" title="幕后字段"></a>幕后字段</h5><p><code>幕后字段</code>是中文文档的翻译，原文为<code>field</code>，但是在我的印象中这个单词应该一般认为是<code>域</code>，在案例代码的使用场景是<code>setter</code>函数中的赋值。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">constructor</span></span>()&#123;</div><div class="line">    <span class="keyword">var</span> name = <span class="string">"老李"</span></div><div class="line">        <span class="keyword">set</span>(n)&#123;</div><div class="line">            name = n</div><div class="line">        &#125;</div><div class="line">    	</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> &#123;</div><div class="line">   	<span class="keyword">val</span> p = Person();</div><div class="line">    println(p.name)</div><div class="line">    p.name = <span class="string">"老王"</span></div><div class="line">    println(p.name)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上述代码是无法通过编译的，虽然我们指定了<code>name</code>为可变的<code>var</code>类型，但是<code>set</code>函数中无法直接引用<code>name</code>，因此我们将函数修改为：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> name = <span class="string">"老李"</span></div><div class="line">        <span class="keyword">set</span>(n)&#123;</div><div class="line">            field = n</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<p>就可以运行了，当然如果不需要在<code>set</code>函数中实现特殊功能，我们可以不显示声明这个函数</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">constructor</span></span>()&#123;</div><div class="line">    <span class="keyword">var</span> name = <span class="string">"老李"</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> &#123;</div><div class="line">   	<span class="keyword">val</span> p = Person();</div><div class="line">    println(p.name)</div><div class="line">    p.name = <span class="string">"老王"</span></div><div class="line">    println(p.name)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上述代码也是完全没有问题的。</p>
+<p>这里的不能引用仅仅是在属性的<code>SETTER</code>与<code>GETTER</code>函数中，类声明的函数是可以直接调用的：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>()&#123;</div><div class="line">    <span class="keyword">var</span> name = <span class="string">"老李"</span></div><div class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">print</span><span class="params">()</span></span>&#123;</div><div class="line">        println(name)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我理解的<code>field</code>就是属性在<code>Getter</code>和<code>Setter</code>中对自身的引用，类似于Java中的<code>this</code>，我们在其他属性的<code>Setter</code>和<code>Stter</code>中依然可以直接引用属性:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">constructor</span></span>()&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">var</span> age = <span class="number">12</span></div><div class="line">    <span class="keyword">var</span> getAge : <span class="built_in">Int</span></div><div class="line">    	<span class="keyword">get</span>() = age</div><div class="line">    	<span class="keyword">set</span>(a)&#123;</div><div class="line">            age = a</div><div class="line">        &#125;</div><div class="line">	<span class="keyword">var</span> name = <span class="string">"老李"</span></div><div class="line">    	<span class="keyword">set</span>(name)&#123;</div><div class="line">            field = name</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="可见性修饰符"><a href="#可见性修饰符" class="headerlink" title="可见性修饰符"></a>可见性修饰符</h5><p>Kotlin中的可见性修饰符与Java中稍有差异。Kotlin中不指定任何修饰符则默认为<code>public</code>，而<code>internal</code>为在同意模块中可见，与Java中的缺省修饰符类似。而<code>protected</code>虽然仍然存在却不推荐使用在顶层声明。</p>
+<p>需要说明的一点是<code>private</code>的定义是在同一个文件下才可被访问，然而实际上仍然是在类中才可被访问，如果我们将下列代码写在同一<code>.kt</code>文件中仍然不能运行：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">constructor</span></span>()&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">var</span> name = <span class="string">"老李"</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> &#123;</div><div class="line">   	<span class="keyword">val</span> p = Person();</div><div class="line">    print(p.name)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这里也许是指的编译后的文件。</p>
+<h5 id="扩展属性"><a href="#扩展属性" class="headerlink" title="扩展属性"></a>扩展属性</h5><p>关于扩展属性需要说明的一点是扩展属性没有<code>幕后字段</code>，所以扩展属性不能有<code>初始化器</code>，在<code>Setter</code>和<code>Getter</code>中也不能通过<code>field</code>来修改值，因此使用场景需要斟酌。</p>
+<h5 id="密封类"><a href="#密封类" class="headerlink" title="密封类"></a>密封类</h5><p>密封类的含义看中文文档和代码完全没懂是什么意思。后来又找了些资料，大概理解了密封类是作为类似枚举的存在，密封类的每个子类都是枚举常量，可以通过<code>is 父类.子类</code>进行类型判断。</p>
+<p>与普通枚举不同的是密封类的子类可以有多个实例，而枚举常量只有一个实例存在。</p>
+<p>使用密封类的好处就是已知了子类的所有可能类型，便于进行判断处理。</p>
+<h5 id="伴生对象"><a href="#伴生对象" class="headerlink" title="伴生对象"></a>伴生对象</h5><p>伴生对象可通过<code>类名.方法</code>进行调用，虽然看起来很像Java中类的静态成员，但实际上伴生对象仍然是类的实例的的实例成员。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/21/Kotlin学习笔记二/">阅读全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-Kotlin学习笔记一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -511,6 +599,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Kotlin</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">技术</a>
               </li>
              
@@ -523,11 +615,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Kotlin</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">gitpage</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -536,10 +628,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">评论系统</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">gitpage</a>
               </li>
             
             <div class="clearfix"></div>
