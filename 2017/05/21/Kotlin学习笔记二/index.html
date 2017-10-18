@@ -19,7 +19,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/21/Kotlin学习笔记二/index.html">
 <meta property="og:site_name" content="小明的博客">
 <meta property="og:description" content="属性和字段属性声明官方文档有这样一段话  其初始器（initializer）、getter 和 setter 都是可选的。属性类型如果可以从初始器 （或者从其 getter 返回值，如下文所示）中推断出来，也可以省略。例如: 1234var allByDefault: Int? // 错误：需要显式初始化器，隐含默认 getter 和 setter...val simple: Int? // 类型">
-<meta property="og:updated_time" content="2017-05-27T16:17:07.000Z">
+<meta property="og:updated_time" content="2017-10-18T16:00:13.227Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kotlin学习笔记二">
 <meta name="twitter:description" content="属性和字段属性声明官方文档有这样一段话  其初始器（initializer）、getter 和 setter 都是可选的。属性类型如果可以从初始器 （或者从其 getter 返回值，如下文所示）中推断出来，也可以省略。例如: 1234var allByDefault: Int? // 错误：需要显式初始化器，隐含默认 getter 和 setter...val simple: Int? // 类型">
@@ -171,7 +171,8 @@
 <p>其初始器（initializer）、getter 和 setter 都是可选的。属性类型如果可以从初始器 （或者从其 getter 返回值，如下文所示）中推断出来，也可以省略。<br>例如:</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> allByDefault: <span class="built_in">Int</span>? <span class="comment">// 错误：需要显式初始化器，隐含默认 getter 和 setter</span></div><div class="line">...</div><div class="line"><span class="keyword">val</span> simple: <span class="built_in">Int</span>? <span class="comment">// 类型 Int、默认 getter、必须在构造函数中初始化</span></div><div class="line">...</div></pre></td></tr></table></figure>
 </blockquote>
-<p>附带的实例代码让我以为<figure class="highlight plain"><figcaption><span>simple: Int?```这种写法是正确的，**val**与**var**在声明中由于**Getter与Setter**的不同导致声明方式存在差异。但是实际上不是这样的。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">在类的声明中以上两种写法均无法通过编译。</div><div class="line"></div><div class="line">``` kotlin</div><div class="line">class Person constructor()&#123;</div><div class="line">    var name: String?</div><div class="line">    val age : Int?</div><div class="line">    init&#123;</div><div class="line">        name = &quot;名字&quot;</div><div class="line">        age = 7</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>附带的实例代码让我以为 <figure class="highlight plain"><figcaption><span>simple: Int? ``` 这种写法是正确的，**val**与**var**在声明中由于**Getter与Setter**的不同导致声明方式存在差异。但是实际上不是这样的。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">在类的声明中以上两种写法均无法通过编译。</div><div class="line"></div><div class="line">``` kotlin</div><div class="line">class Person constructor()&#123;</div><div class="line">    var name: String?</div><div class="line">    val age : Int?</div><div class="line">    init&#123;</div><div class="line">        name = &quot;名字&quot;</div><div class="line">        age = 7</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>如果不为属性直接指定值<code>var name = &quot;名字&quot;</code>那么就要在<code>init</code>中进行初始化。</p>
 <p>我们也可以为属性添加<code>lateinit</code>修饰符使空属性避免初始化</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">constructor</span></span>()&#123;</div><div class="line">    <span class="keyword">lateinit</span> <span class="keyword">var</span> name : String</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -278,6 +279,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2017/10/18/Android-TV开发笔记一/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Android TV开发笔记一
+        
+      </div>
+    </a>
   
   
     <a href="/2017/05/18/Kotlin学习笔记一/" id="article-nav-older" class="article-nav-link-wrap">
@@ -402,10 +412,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Kotlin</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">技术</a>
               </li>
              
@@ -418,11 +424,19 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">TV 开发</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">gitpage</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Kotlin</a>
               </li>
              
               <li class="article-tag-list-item">

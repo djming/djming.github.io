@@ -10,17 +10,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 评论系统 | 小明的博客</title>
+  <title>Android TV开发笔记一 | 小明的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="随便写点东西">
-<meta property="og:type" content="website">
-<meta property="og:title" content="小明的博客">
-<meta property="og:url" content="http://yoursite.com/tags/评论系统/index.html">
+  <meta name="description" content="今天在开发TV Launcher时使用RecyclerView实现界面时遇到了遥控器无法对焦的问题，但连接上鼠标后没有问题，因此需要配置RecyclerView的Item获取焦点。">
+<meta name="keywords" content="Android,TV 开发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android TV开发笔记一">
+<meta property="og:url" content="http://yoursite.com/2017/10/18/Android-TV开发笔记一/index.html">
 <meta property="og:site_name" content="小明的博客">
-<meta property="og:description" content="随便写点东西">
+<meta property="og:description" content="今天在开发TV Launcher时使用RecyclerView实现界面时遇到了遥控器无法对焦的问题，但连接上鼠标后没有问题，因此需要配置RecyclerView的Item获取焦点。">
+<meta property="og:updated_time" content="2017-10-18T16:27:00.837Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小明的博客">
-<meta name="twitter:description" content="随便写点东西">
+<meta name="twitter:title" content="Android TV开发笔记一">
+<meta name="twitter:description" content="今天在开发TV Launcher时使用RecyclerView实现界面时遇到了遥控器无法对焦的问题，但连接上鼠标后没有问题，因此需要配置RecyclerView的Item获取焦点。">
   
     <link rel="alternative" href="/atom.xml" title="小明的博客" type="application/atom+xml">
   
@@ -144,72 +146,156 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Android-TV开发笔记一" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/16/hexo-yillia主题使用微博评论箱/" class="archive-article-date">
-  	<time datetime="2017-05-16T09:11:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-16</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/16/hexo-yillia主题使用微博评论箱/">hexo+yilia主题使用微博评论箱</a>
+    <h1 class="article-title" itemprop="name">
+      Android TV开发笔记一
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/10/18/Android-TV开发笔记一/" class="archive-article-date">
+  	<time datetime="2017-10-18T15:38:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天在开发TV Launcher时使用RecyclerView实现界面时遇到了遥控器无法对焦的问题，但连接上鼠标后没有问题，因此需要配置RecyclerView的Item获取焦点。<br><a id="more"></a><br>一般的做法是将RecyclerView与VIewHolder的itemView均设为可点击，然后对焦点变更时间进行监听，当RecyclerView获取到焦点时分发给item：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> MyAdapter extends RecyclerView.Adapter&lt;MyViewHolder&gt; &#123;</div><div class="line">     ...</div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">MyViewHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> </span>&#123;</div><div class="line">        MyViewHolder(View itemView)&#123;</div><div class="line">            <span class="keyword">super</span>(itemView);</div><div class="line">            itemView.setFocusable(<span class="keyword">true</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">...</div><div class="line"><span class="comment">/*</span></div><div class="line">*这里也可以在xml文件中设置focusable = "true"</div><div class="line">*/</div><div class="line">RecyclerView rv = (RecyclerView) findViewById(R.id.recyclerView);</div><div class="line">rv.setFocusable(<span class="keyword">true</span>);</div><div class="line"></div><div class="line"><span class="comment">//RecyclerView监听焦点改变事件</span></div><div class="line">rv.setOnFocusChangeListener(<span class="keyword">new</span> View.OnFocusChangeListener() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFocusChange</span><span class="params">(View v, <span class="keyword">boolean</span> hasFocus)</span> </span>&#123;</div><div class="line">                <span class="keyword">if</span> (hasFocus)&#123;</div><div class="line">                     <span class="comment">//先判断是否有子控件，防止空指针。</span></div><div class="line">                    <span class="keyword">if</span> (rv.getChildCount() &gt; <span class="number">0</span>)&#123;</div><div class="line">                        <span class="comment">//我默认使第一个item获取焦点，可以任意修改</span></div><div class="line">                        irv.getChildAt(<span class="number">0</span>).requestFocus();</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div></pre></td></tr></table></figure>
+<p>以上代码就能使RecyclerView得到焦点后分配给子控件，解决电视遥控器无法使RecyclerView滚动的问题。</p>
+<p>但是。。。这是以前的解决方法，今天在使用一个复杂的LayoutManager时发现子控件获取到了焦点，但不知是焦点闪烁还是什么原因导致不停按按钮才能滑动到下一个item，这个目前还没有发现原因，但是由于这个问题只在遥控器控制时出现，所以想要解决还是很简单的。</p>
+<p>解决方法便是，禁止itemView获取焦点，然后由RecyclerView监听按键事件，当获取到遥控器按下左或右时调用smoothScrollToPosition(int position)的方法完成切换，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">rv..setOnKeyListener(<span class="keyword">new</span> View.OnKeyListener() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onKey</span><span class="params">(View v, <span class="keyword">int</span> keyCode, KeyEvent event)</span> </span>&#123;</div><div class="line">                iif (event.getAction() == KeyEvent.ACTION_UP)&#123;</div><div class="line">                    <span class="keyword">switch</span> (keyCode)&#123;</div><div class="line">                        <span class="keyword">case</span> KEY_LEFT:</div><div class="line">                            itemList.smoothScrollToPosition(lastPos);</div><div class="line">                            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">                        <span class="keyword">case</span> KET_RIGHT:</div><div class="line">                            itemList.smoothScrollToPosition(nextPos);</div><div class="line">                            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">                        <span class="keyword">default</span>:</div><div class="line">                            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div></pre></td></tr></table></figure>
+<p>至于为什么会出现类似焦点闪烁的问题，有待研究，希望知道的大神们能点拨一下😂。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">yilia</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">评论系统</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">TV 开发</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/10/18/Android-TV开发笔记一/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/05/21/Kotlin学习笔记二/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Kotlin学习笔记二</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-    
+  
+		<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8yODY4Ni81MjU3">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+  
 
 
           </div>
@@ -232,9 +318,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
