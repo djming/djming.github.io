@@ -67,10 +67,19 @@ greenDAO:基于Android，轻量。
 存活判断：引用计数，可达性。
 
 ### 工具
-
 1. lint
 2. leakcanry
 3. FaceBook Redex 压缩优化apk
+
+### Looper、Message、MessageQeue
+1. 通过Message.obtain()创建Message对象时不会直接新建，而是判断池中是否有空闲Message对象可复用。
+2. Handler中通过dispatchMessage分发消息，若message自身带有callback则直接运行Message自带的callback逻辑，否则才运行Handler的callback逻辑。
+3. Looper的使用需要先调用Looper.preper()创建线程对应的Looper并存入ThreadLocal中，再通过Looper.loop()开始死循环。
+4. Handler中的MessageQueue是有该线程的Looper创建，是Looper中定义的成员变量。
+4. 由于Handler可以被各个线程调用执行handleMessage的方法插入Message，但取出message是由Looper.loop()完成的，这个死循环运行在创建它的线程，因此达到了线程间传递数据的任务，但任务最终只能在创建Handler的线程运行。
+
+### StartActivityForResult
+当启动Activity为singleInstance时该activity会先结束自身再调起新的activity，也是就是onActivityResult会在新Activity调起前执行，resultCode为0.猜测是因为singleInstance的activity由于单独存在与一个Task，因此需要先弹出自身，切换Task才能调起新的activity，在使用时应当注意。
 
 ### 疑问
   1. 创建reccyclerview的viewholder时若指定了viewgroup不为null，在自定义的layoutmanager如果调用addView会造成问题，这时通过removeView可以解决，但是这种情况会把viewholder也remove掉，原因需要查询。
