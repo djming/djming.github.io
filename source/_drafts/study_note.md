@@ -81,5 +81,11 @@ greenDAO:基于Android，轻量。
 ### StartActivityForResult
 当启动Activity为singleInstance时该activity会先结束自身再调起新的activity，也是就是onActivityResult会在新Activity调起前执行，resultCode为0.猜测是因为singleInstance的activity由于单独存在与一个Task，因此需要先弹出自身，切换Task才能调起新的activity，在使用时应当注意。
 
+### View生命周期与Activity生命周期
+如图![进入Project Structure](/imgs/view&activity%20life%20circle.png)
+
+### RecyclerView 问题
+RecyclerView的child会在onLayout时才加入进去，因此在上图中onLayout之前调用getChildAt(pos)会得到null，并且在重新绘制时由于child会被清理，因此也会得到null。
+
 ### 疑问
   1. 创建reccyclerview的viewholder时若指定了viewgroup不为null，在自定义的layoutmanager如果调用addView会造成问题，这时通过removeView可以解决，但是这种情况会把viewholder也remove掉，原因需要查询。
