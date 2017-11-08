@@ -85,7 +85,11 @@ greenDAO:基于Android，轻量。
 如图![进入Project Structure](/imgs/view&activity%20life%20circle.png)
 
 ### RecyclerView 问题
-RecyclerView的child会在onLayout时才加入进去，因此在上图中onLayout之前调用getChildAt(pos)会得到null，并且在重新绘制时由于child会被清理，因此也会得到null。
+1. RecyclerView的child会在onLayout时才加入进去，因此在上图中onLayout之前调用getChildAt(pos)会得到null，并且在重新绘制时由于child会被清理，因此也会得到null。
+可以通过添加reccyclerview.addOnLayoutChangeListener()来监听onLayout事件第一时间获取child，如果只需要获取一次则记得在重写的方法中remove掉listener以节约资源。
+2. RecyclerView只会保存当前显示在屏幕上的item，假如我们有100条数据，但屏幕只能看到1-20条，则`rv.getChildCount()//返回20（滑动时可能返回21）`，并且在调用`getChildAt(i)//i>21`时会得到null
+但是`rv.smoothToPosition(i)`不会受到影响，因为recyclerview内部会自动计算滑动距离，与item对象是否存在无关。
+3. 实际上`getChildAt(i)`获取到的是屏幕上可见的第一个item。
 
 ### 疑问
   1. 创建reccyclerview的viewholder时若指定了viewgroup不为null，在自定义的layoutmanager如果调用addView会造成问题，这时通过removeView可以解决，但是这种情况会把viewholder也remove掉，原因需要查询。
