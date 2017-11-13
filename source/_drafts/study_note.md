@@ -91,5 +91,8 @@ greenDAO:基于Android，轻量。
 但是`rv.smoothToPosition(i)`不会受到影响，因为recyclerview内部会自动计算滑动距离，与item对象是否存在无关。
 3. 实际上`getChildAt(i)`获取到的是屏幕上可见的第一个item。
 
+### Glide
+1. Glide的数据加载、显示工作都在`into()`中完成，`load()`函数只将target保存了起来，因此不调用`into()`，Glide不会把图片放入缓存。
+
 ### 疑问
   1. 创建reccyclerview的viewholder时若指定了viewgroup不为null，在自定义的layoutmanager如果调用addView会造成问题，这时通过removeView可以解决，但是这种情况会把viewholder也remove掉，原因需要查询。
