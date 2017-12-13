@@ -96,3 +96,6 @@ greenDAO:基于Android，轻量。
 
 ### 疑问
   1. 创建reccyclerview的viewholder时若指定了viewgroup不为null，在自定义的layoutmanager如果调用addView会造成问题，这时通过removeView可以解决，但是这种情况会把viewholder也remove掉，原因需要查询。
+
+### 虚引用与ReferenceQueue
+虚引用在任何时候get()返回都为null，ReferenceQueue用于存储即将被回收的对象，GC会将即将回收的引用放入ReferenceQueue中。
