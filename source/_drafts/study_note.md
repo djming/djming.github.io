@@ -99,3 +99,6 @@ greenDAO:基于Android，轻量。
 
 ### 虚引用与ReferenceQueue
 虚引用在任何时候get()返回都为null，ReferenceQueue用于存储即将被回收的对象，GC会将即将回收的引用放入ReferenceQueue中。
+
+### StringBuilder原理
+将`append(String str)`传入的参数分解为***cahr***并储存在名为`value`的`char[]`中，重写`toString()`方法返回一个拼接而成的新字符串。从而避免每次通过`+`拼接时都需要新建字符串造成的资源浪费。
