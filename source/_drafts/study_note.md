@@ -102,3 +102,14 @@ greenDAO:基于Android，轻量。
 
 ### StringBuilder原理
 将`append(String str)`传入的参数分解为***cahr***并储存在名为`value`的`char[]`中，重写`toString()`方法返回一个拼接而成的新字符串。从而避免每次通过`+`拼接时都需要新建字符串造成的资源浪费。
+
+### Handler
+
+handler.postDelayed()会创建一个新的的Msg发送，msg.what=0
+
+### removeAllView Caused by: java.lang.IllegalArgumentException: parameter must be a descendant of this view
+
+由于子控件有焦点的情况下调用removeAllView，嵌套的两个ViewGroup均会判断焦点，而更低一级的ViewGroup不属于子控件的父类，因此报错。解决方法时调用之前清理焦点。
+
+### SharedPreference的坑
+SharedPreference在保存Set<String>时如果存入的时取出的Set那么即使有修改也不会写入文件，除非之后在写入新的数据，强制`putStringSet()`flush到文件中，或者将`getStringSet()`获取到的对象克隆到新对象中，之后将新对象保存到Sharedpreference中。
