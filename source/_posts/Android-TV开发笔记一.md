@@ -8,7 +8,7 @@ tags:
 
 今天在开发TV Launcher时使用RecyclerView实现界面时遇到了遥控器无法对焦的问题，但连接上鼠标后没有问题，因此需要配置RecyclerView的Item获取焦点。
 <!--more-->
-一般的做法是将RecyclerView与VIewHolder的itemView均设为可点击，然后对焦点变更时间进行监听，当RecyclerView获取到焦点时分发给item：
+一般的做法是将RecyclerView与ViewHolder的itemView均设为可点击，然后对焦点变更时间进行监听，当RecyclerView获取到焦点时分发给item：
 
 ```  java
 public MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
