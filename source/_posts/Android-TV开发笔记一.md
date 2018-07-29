@@ -48,7 +48,7 @@ rv.setOnFocusChangeListener(new View.OnFocusChangeListener() {
 解决方法便是，禁止itemView获取焦点，然后由RecyclerView监听按键事件，当获取到遥控器按下左或右时调用smoothScrollToPosition(int position)的方法完成切换，代码如下：
 
 ``` java
-rv..setOnKeyListener(new View.OnKeyListener() {
+rv.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 iif (event.getAction() == KeyEvent.ACTION_UP){
