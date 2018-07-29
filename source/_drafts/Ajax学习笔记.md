@@ -87,3 +87,33 @@ xmlhttp.onreadystatechange=function()
 //输入完成后将调用showHint()函数
 <input type="text" id="txt1" onkeyup="showHint(this.value)" />
 ```
+
+#### 实例
+通过AJAX向后台批量POST添加数据
+
+``` js
+<script>
+  function add()
+  {
+    var num = 10;
+    var type = "sports";
+    var typeStr = "SPORTS";
+    var cookie = "pgv_pvi=3360355328; ca_uuid=15508cea-a97b-4f19-87e5-6a917e9557f6; qqmail_alias=dengjinming@cvte.com; x-auth-uid=cbd5406f-aaa2-4c6f-9808-d9699f633477; x-auth-token=4ib2Tq4nQjHpJPy3CmbuXpBsrBvTtojvabSRwpcn93ZtPLiq/ubkcDt9I0yYi0f6vpJP5Y4avRV0R2MVU/8wgdifU6kNBGNzF-NcX3k01b8_:197e26db; x-auth-app=starkuitest; x-auth-info=%7B%22nickname%22%3A%22TEst%22%2C%22isCVTE%22%3A%221%22%7D";
+    for (var i =0;i<num; i++) {
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange=function()
+      {
+        if(xmlhttp.status==200){
+          console.log("add No.%i success", i);
+        }
+      }
+      xmlhttp.open("POST", "http://starkui.cvte.com:82/stark-admin/cgi/operation/content/new", true);
+      xmlhttp.setRequestHeader("Content-type","application/json;charset=UTF-8");
+      xmlhttp.setRequestHeader("Cookie",cookie);
+      xmlhttp.setRequestHeader("Host","starkui.cvte.com:82")
+      xmlhttp.setRequestHeader("origin","http://starkui.cvte.com:82");
+        xmlhttp.send(JSON.stringify({"name":"V3_Youtube_"+typeStr+"_"+i, "imageScale":0,"type":0,"distributeCmd":{"id":i, "supplierType":type,"interceptBind":"false"}, "executive":"YoutubeDataExecutive","companyId":1}));
+    }
+  }
+  </script>
+```
