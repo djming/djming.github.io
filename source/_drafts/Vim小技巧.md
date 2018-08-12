@@ -3,6 +3,7 @@ title: Vim小技巧
 reward: false
 date: 2018-08-13 01:54:04
 tags:
+	- vim
 ---
 
 # YCM配置
