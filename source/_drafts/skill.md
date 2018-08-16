@@ -23,3 +23,9 @@ exec zsh
 ``` zsh
 sudo rm /private/var/log/asl/*.asl
 ```
+
+### 遍历文件内容
+
+``` shell
+grep -rn 'content' 
+```
