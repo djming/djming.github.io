@@ -39,6 +39,7 @@ public void onLayoutChildren(@NonNull final RecyclerView.Recycler recycler, @Non
 ```
 
 `fillData()`函数内容：
+
 ``` java
 private void fillData(@NonNull final RecyclerView.Recycler recycler, @NonNull final RecyclerView.State state, final boolean childMeasuringNeeded)
 {
@@ -65,6 +66,7 @@ private void fillData(@NonNull final RecyclerView.Recycler recycler, @NonNull fi
 ```
 
 `generateLayoutOrder()`函数比较重要了，Azoft在其中通过巧妙的方法实现了item之间层级的管理，代码分析如下：
+
 ``` java
 private void generateLayoutOrder(final float currentScrollPosition, @NonNull final RecyclerView.State state) {
   mItemsCount = state.getItemCount();
@@ -147,6 +149,7 @@ private void fillDataHorizontal(final RecyclerView.Recycler recycler, final int 
 }
 ```
 我们进入`fillChidrenItem()`中：
+
 ``` java
 private void fillChildItem(final int start, final int top, final int end, final int bottom, @NonNull final LayoutOrder layoutOrder, @NonNull final RecyclerView.Recycler recycler, final int i, final boolean childMeasuringNeeded) {
   //创建出view并加入
@@ -177,6 +180,7 @@ private void fillChildItem(final int start, final int top, final int end, final 
 ```
 
 因此我们最后看看`CarouselZoomPostLayoutListener.java`：
+
 ``` java
 public class CarouselZoomPostLayoutListener implements CarouselLayoutManager.PostLayoutListener {
 

@@ -6,6 +6,7 @@ AJAX 最大的优点是在不重新加载整个页面的情况下，可以与服
 AJAX 不需要任何浏览器插件，但需要用户允许JavaScript在浏览器上执行。
 
 #### 创建对象
+
 ``` js
 var xmlhttp;
 if (window.XMLHttpRequest)
@@ -22,6 +23,7 @@ else
 ```
 
 #### 发送请求
+
 ``` js
 xmlhttp.open("GET","ajax_info.txt",true);
 xmlhttp.send();
@@ -39,6 +41,7 @@ xmlhttp.send();
 ```
 
 #### POST请求
+
 ``` js
 xmlhttp.open("POST","/try/ajax/demo_post2.php",true);
 xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
@@ -51,6 +54,7 @@ responseText|获得字符串形式的响应数据
 responseXML|形式的响应数据
 
 解析XML：
+
 ``` js
 xmlDoc=xmlhttp.responseXML;
 txt="";
@@ -83,6 +87,7 @@ xmlhttp.onreadystatechange=function()
 
 #### 其他
 1. HTML标签的`onkeyup`属性可接受函数，在操作完成后被调用：
+
 ``` html
 //输入完成后将调用showHint()函数
 <input type="text" id="txt1" onkeyup="showHint(this.value)" />
