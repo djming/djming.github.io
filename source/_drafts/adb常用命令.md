@@ -7,4 +7,5 @@
 	adb shell pm list packages	//列出已安装的apk
 
 	adb shell dumpsys activity //显示当前activity栈
+	adb shell dumpsys activity | findstr “mFocusedActivity” //显示最上层
 ```
