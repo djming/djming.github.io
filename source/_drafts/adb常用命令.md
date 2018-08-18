@@ -5,4 +5,6 @@
 	adb root && adb remount		//挂载，获取root权限
 
 	adb shell pm list packages	//列出已安装的apk
+
+	adb shell dumpsys activity //显示当前activity栈
 ```
