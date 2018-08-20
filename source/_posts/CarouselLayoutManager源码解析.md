@@ -12,7 +12,7 @@ date: 2017-11-08 15:54:57
 [CarouselLayoutManager](https://github.com/Azoft/CarouselLayoutManager)实现的是旋转木马样式的RecyclerView布局，使用非常简单，直接新建出来再通过`recyclerview.setLayoutManager()`设置进去就能实现效果了，实际效果如下：
 <!--more-->
 
-![carousellayoutmanager效果图](../imgs/carousel_double_work_small.gif)
+![carousellayoutmanager效果图](/imgs/carousel_double_work_small.gif)
 
 红线时demo中作者添加的效果，实际使用不会出现。  
 但是由于项目需要实现的效果与标准CarouselLayoutManager实现的效果稍有出入，比如标准效果水平转动时所有item的中心都是在一条直线上，但需求时左右两边的item中心相对于中间高一些，其余诸如item间距以及缩放比例在CarouselLayoutManager中都没有开放出相对应的接口进行修改。  
@@ -21,7 +21,7 @@ date: 2017-11-08 15:54:57
 # 源码下载及导入
 首先需要从github上clone下整个项目源码，如果对于自定义LayoutManager完全没有了解可以在等待clone完成的时候谷歌（或者百度）一下自定义LayoutManager的基础知识。  
 clone完成后进入到项目文件夹可以看到实际上源码包含了**carousel**和**sample**两个项目，sample跑出来就是上面GIF图的效果，可以看看作者是怎么使用的或者用来查看修改后的效果，如果不感兴趣也可以直接打开carousel项目就行了。  
-在导入整个项目时（我导入的时sample）会有个奇怪的问题时找不到`local.properties`文件，但这个文件实际上就在sample文件夹中，直接复制到项目根目录下再**build**就OK了。这是导入后的目录：![carousel项目目录](../imgs/carousel_prj_dir.png)  
+在导入整个项目时（我导入的时sample）会有个奇怪的问题时找不到`local.properties`文件，但这个文件实际上就在sample文件夹中，直接复制到项目根目录下再**build**就OK了。这是导入后的目录：![carousel项目目录](/imgs/carousel_prj_dir.png)  
 如果是在项目中使用定制的CarouselLayoutManager只需要将`com.azoft.carousellayoutmanager`包下的代码全部复制进自己的项目就可以使用了。
 
 # 源码分析
