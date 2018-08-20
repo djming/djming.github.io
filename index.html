@@ -146,6 +146,71 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-CarouselLayoutManager源码解析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/08/CarouselLayoutManager源码解析/">CarouselLayoutManager源码解析</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/08/CarouselLayoutManager源码解析/" class="archive-article-date">
+  	<time datetime="2017-11-08T07:54:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="CarouselLayoutManager简介"><a href="#CarouselLayoutManager简介" class="headerlink" title="CarouselLayoutManager简介"></a>CarouselLayoutManager简介</h1><p><a href="https://github.com/Azoft/CarouselLayoutManager" target="_blank" rel="external">CarouselLayoutManager</a>实现的是旋转木马样式的RecyclerView布局，使用非常简单，直接新建出来再通过<code>recyclerview.setLayoutManager()</code>设置进去就能实现效果了，实际效果如下：<br>
+        
+          <a class="article-more-a" href="/2017/11/08/CarouselLayoutManager源码解析/#more">继续阅读 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">源码分析</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/08/CarouselLayoutManager源码解析/">阅读全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-Android-TV开发笔记一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -192,9 +257,6 @@
 		</ul>
 	</div>
 
-	  <span id="busuanzi_container_page_pv">
-	    |阅读量(<span id="busuanzi_value_page_pv"></span>)
-	  </span>
       
 
       
@@ -260,9 +322,6 @@
 		</ul>
 	</div>
 
-	  <span id="busuanzi_container_page_pv">
-	    |阅读量(<span id="busuanzi_value_page_pv"></span>)
-	  </span>
       
 
       
@@ -326,9 +385,6 @@
 		</ul>
 	</div>
 
-	  <span id="busuanzi_container_page_pv">
-	    |阅读量(<span id="busuanzi_value_page_pv"></span>)
-	  </span>
       
 
       
@@ -388,19 +444,16 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Android Studio</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Android Studio</a>
         		</li>
       		
 		</ul>
 	</div>
 
-	  <span id="busuanzi_container_page_pv">
-	    |阅读量(<span id="busuanzi_value_page_pv"></span>)
-	  </span>
       
 
       
@@ -475,9 +528,6 @@
 		</ul>
 	</div>
 
-	  <span id="busuanzi_container_page_pv">
-	    |阅读量(<span id="busuanzi_value_page_pv"></span>)
-	  </span>
       
 
       
@@ -549,9 +599,6 @@
 		</ul>
 	</div>
 
-	  <span id="busuanzi_container_page_pv">
-	    |阅读量(<span id="busuanzi_value_page_pv"></span>)
-	  </span>
       
 
       
@@ -581,7 +628,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2017 小明
+    		&copy; 2018 小明
     	</div>
 		<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
@@ -662,19 +709,31 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Kotlin</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">区块链</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Asch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -687,10 +746,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">TV 开发</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技术</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -707,6 +762,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">评论系统</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
               </li>
             
             <div class="clearfix"></div>
