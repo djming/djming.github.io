@@ -14,14 +14,14 @@ tags:
 例如:
 
 >``` kotlin
-var allByDefault: Int? // 错误：需要显式初始化器，隐含默认 getter 和 setter
-...
-val simple: Int? // 类型 Int、默认 getter、必须在构造函数中初始化
-...
-```
+>var allByDefault: Int? // 错误：需要显式初始化器，隐含默认 getter 和 setter
+>...
+>val simple: Int? // 类型 Int、默认 getter、必须在构造函数中初始化
+>...
+>```
 <!--more-->
 
-附带的实例代码让我以为 ``` val simple: Int? ``` 这种写法是正确的，**val**与**var**在声明中由于**Getter与Setter**的不同导致声明方式存在差异。但是实际上不是这样的。
+附带的实例代码让我以为 `val simple: Int? ` 这种写法是正确的，**val**与**var**在声明中由于**Getter与Setter**的不同导致声明方式存在差异。但是实际上不是这样的。
 
 在类的声明中以上两种写法均无法通过编译。
 
