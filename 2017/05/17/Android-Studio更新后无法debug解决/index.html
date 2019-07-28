@@ -13,7 +13,7 @@
   <title>Android Studio更新后无法debug解决 | 小明的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="之前更新AS后遇到一个问题就是本来正常的项目突然在运行后无法自动调起界面了，我使用真机通过数据线连接到AS调试项目，点击运行后apk被正确安装到了手机上，但是没有在AS引导下自动打开app，并且debug也失败，无法调起debug界面。查了很多资料也没个结果，当时以为是AS新版本的问题，毕竟AS从1.5升级到2.0步子也挺大的，后来问学长却发现他没有遇到这个问题，依然跑得飞起。。。最后是一个已经工">
-<meta name="keywords" content="Android,技术,Android Studio">
+<meta name="keywords" content="Android,Android Studio,技术">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android Studio更新后无法debug解决">
 <meta property="og:url" content="http://yoursite.com/2017/05/17/Android-Studio更新后无法debug解决/index.html">
@@ -88,6 +88,8 @@
 		<nav class="header-nav">
 			<div class="social">
 				
+					<a class="weibo" target="_blank" href="https://weibo.com/u/7221219605?is_all=1" title="weibo"><i class="icon-weibo"></i></a>
+		        
 					<a class="qq" target="_blank" href="tencent://message/?uin=244205415&Site=小明的博客&Menu=yes" title="qq"><i class="icon-qq"></i></a>
 		        
 					<a class="mail" target="_blank" href="mailto:244205415@qq.com" title="mail"><i class="icon-mail"></i></a>
@@ -125,6 +127,8 @@
 			<nav class="header-nav">
 				<div class="social">
 					
+						<a class="weibo" target="_blank" href="https://weibo.com/u/7221219605?is_all=1" title="weibo"><i class="icon-weibo"></i></a>
+			        
 						<a class="qq" target="_blank" href="tencent://message/?uin=244205415&Site=小明的博客&Menu=yes" title="qq"><i class="icon-qq"></i></a>
 			        
 						<a class="mail" target="_blank" href="mailto:244205415@qq.com" title="mail"><i class="icon-mail"></i></a>
@@ -174,7 +178,7 @@
         <p>之前更新AS后遇到一个问题就是本来正常的项目突然在运行后无法自动调起界面了，我使用真机通过数据线连接到AS调试项目，点击运行后apk被正确安装到了手机上，但是没有在AS引导下自动打开app，并且debug也失败，无法调起debug界面。查了很多资料也没个结果，当时以为是AS新版本的问题，毕竟AS从1.5升级到2.0步子也挺大的，后来问学长却发现他没有遇到这个问题，依然跑得飞起。。。最后是一个已经工作的大神指导，让我升级<strong>Gradle</strong>版本试试，果然升级之后就OK了，这里记录一下升级过程。</p>
 <a id="more"></a>
 <p>直接右键点击app文件夹，打开<code>Project Structure</code>，或者通过<code>File-&gt;Project Structure</code>打开，</p>
-<p><img src="/imgs/path2ps.png" alt="进入Project Structure"><br>进入到<code>Project</code>栏，在这里修改<code>Gradle</code>和<code>Android Plugin Version</code>的版本，<br><img src="/imgs/change_gradle_version.png" alt="修改版本"><br><code>Android Plugin Version</code>是<strong>Gradle插件版本号</strong>，这个也可以去<code>build.gradle</code>文件中直接修改。两者之间存在着对应关系，不能随便设置的，对应关系可以直接到<a href="https://developer.android.com/studio/releases/gradle-plugin.html" target="_blank" rel="external">官方用户指南去查看</a></p>
+<p><img src="/imgs/path2ps.png" alt="进入Project Structure"><br>进入到<code>Project</code>栏，在这里修改<code>Gradle</code>和<code>Android Plugin Version</code>的版本，<br><img src="/imgs/change_gradle_version.png" alt="修改版本"><br><code>Android Plugin Version</code>是<strong>Gradle插件版本号</strong>，这个也可以去<code>build.gradle</code>文件中直接修改。两者之间存在着对应关系，不能随便设置的，对应关系可以直接到<a href="https://developer.android.com/studio/releases/gradle-plugin.html" target="_blank" rel="noopener">官方用户指南去查看</a></p>
 <p>自从AS2.0版本以后经常在更新了AS之后打开项目时提示一个更新<code>INSTANT RUN</code>的通知，这个我每次都没看清就点确定了，今天更新的时候才注意到更新的通知栏其实就提示了<code>建议用户将Gradle升级3.3及插件2.3.2版本</code>，<br><img src="/imgs/instant_run_update_dialog.png" alt="提示"><br>要是更新前仔细看也就不会那么痛苦地debug好几天了吧。。。</p>
 
       
@@ -193,11 +197,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Android Studio</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Android Studio</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
         		</li>
       		
 		</ul>
@@ -321,7 +325,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 小明
+    		&copy; 2019 小明
     	</div>
 		<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
@@ -402,10 +406,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Kotlin</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
@@ -418,6 +418,14 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Kotlin</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
@@ -426,15 +434,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Android Studio</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">小技巧</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -455,6 +463,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">评论系统</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">摄影</a>
               </li>
              
               <li class="article-tag-list-item">

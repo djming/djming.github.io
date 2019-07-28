@@ -84,6 +84,8 @@
 		<nav class="header-nav">
 			<div class="social">
 				
+					<a class="weibo" target="_blank" href="https://weibo.com/u/7221219605?is_all=1" title="weibo"><i class="icon-weibo"></i></a>
+		        
 					<a class="qq" target="_blank" href="tencent://message/?uin=244205415&Site=小明的博客&Menu=yes" title="qq"><i class="icon-qq"></i></a>
 		        
 					<a class="mail" target="_blank" href="mailto:244205415@qq.com" title="mail"><i class="icon-mail"></i></a>
@@ -121,6 +123,8 @@
 			<nav class="header-nav">
 				<div class="social">
 					
+						<a class="weibo" target="_blank" href="https://weibo.com/u/7221219605?is_all=1" title="weibo"><i class="icon-weibo"></i></a>
+			        
 						<a class="qq" target="_blank" href="tencent://message/?uin=244205415&Site=小明的博客&Menu=yes" title="qq"><i class="icon-qq"></i></a>
 			        
 						<a class="mail" target="_blank" href="mailto:244205415@qq.com" title="mail"><i class="icon-mail"></i></a>
@@ -168,7 +172,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>今天在看一篇某大神写得技术文章时萌生了自己搭建一个博客的想法，于是在大神博客的底部发现了使用的框架以及主题。</p>
-<p>hexo的安装搭建很简单，官方文档很全面而且也有中文版，网上也有不少文章，这里给上链接不再赘述:<a href="https://hexo.io/zh-cn/docs/index.html" target="_blank" rel="external">官方中文文档</a>和<a href="https://wsgzao.github.io/post/hexo-guide/" target="_blank" rel="external">大神的超全面教程</a>。</p>
+<p>hexo的安装搭建很简单，官方文档很全面而且也有中文版，网上也有不少文章，这里给上链接不再赘述:<a href="https://hexo.io/zh-cn/docs/index.html" target="_blank" rel="noopener">官方中文文档</a>和<a href="https://wsgzao.github.io/post/hexo-guide/" target="_blank" rel="noopener">大神的超全面教程</a>。</p>
 <p>我就谈谈作为一个没接触过这类框架的小白在搭建过程中遇到的坑。<br><a id="more"></a></p>
 <h3 id="hexo如何发布到gitpage"><a href="#hexo如何发布到gitpage" class="headerlink" title="hexo如何发布到gitpage"></a>hexo如何发布到gitpage</h3><p>我在搭建hexo的过程中最大的疑惑就是如何把hexo搭到gitpage上？我自己是以为创建好repository后需要clone到本地进行搭建再push上服务器。其实不必这么麻烦，hexo会解决上传的问题。所以我们可以通过<code>hexo init &lt;floder&gt;</code>命令把项目创建在自己喜欢的目录名中。<code>hexo d</code>命令会根据你在<code>_config.yml</code>中<code>deploy</code>项下配置的repository的地址将项目push上去，当然前提是你已经配置好了本地了git命令。所以不用再纠结<code>hexo init</code>到底在哪个目录执行，怎么去上传这类的问题。</p>
 <h3 id="Cannot-Get"><a href="#Cannot-Get" class="headerlink" title="Cannot Get /"></a>Cannot Get /</h3><p>在执行了hexo server没有报错情况下访问localhost:4000可能会看到这个错误页面，导致这种问题可能是两种情况：</p>
@@ -319,7 +323,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 小明
+    		&copy; 2019 小明
     	</div>
 		<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
@@ -400,10 +404,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Kotlin</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
@@ -416,6 +416,14 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Kotlin</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
@@ -424,15 +432,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Android Studio</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">小技巧</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -453,6 +461,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">评论系统</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">摄影</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -90,6 +90,8 @@
 		<nav class="header-nav">
 			<div class="social">
 				
+					<a class="weibo" target="_blank" href="https://weibo.com/u/7221219605?is_all=1" title="weibo"><i class="icon-weibo"></i></a>
+		        
 					<a class="qq" target="_blank" href="tencent://message/?uin=244205415&Site=小明的博客&Menu=yes" title="qq"><i class="icon-qq"></i></a>
 		        
 					<a class="mail" target="_blank" href="mailto:244205415@qq.com" title="mail"><i class="icon-mail"></i></a>
@@ -127,6 +129,8 @@
 			<nav class="header-nav">
 				<div class="social">
 					
+						<a class="weibo" target="_blank" href="https://weibo.com/u/7221219605?is_all=1" title="weibo"><i class="icon-weibo"></i></a>
+			        
 						<a class="qq" target="_blank" href="tencent://message/?uin=244205415&Site=小明的博客&Menu=yes" title="qq"><i class="icon-qq"></i></a>
 			        
 						<a class="mail" target="_blank" href="mailto:244205415@qq.com" title="mail"><i class="icon-mail"></i></a>
@@ -173,14 +177,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>昨天新搭好博客之后就一直想要添加一个留言版方便和大家交流（虽然跟没有人），我使用的是<a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="external">litten大神的yilia主题</a>，里面本身就帮助我们添加了畅言、多说、网易云跟帖、Disqus四种评论系统，我们只需要修改主题根目录下的<code>_config.yml</code>文件，配置<strong>appid</strong>就可以使用了，非常方便。</p>
-<p>但是。。。我的环境是gitpage+hexo，并且没有自己的域名，而畅言需要域名的备案号，无法申请；网易云跟帖判断github.io url已存在，无法申请；多说将在6月关闭，不推荐使用；Disqus在墙内使用不方便，不推荐使用。。。于是我只能另谋出路。<br><a id="more"></a><br>经过多方搜索，我发现<a href="http://www.uyan.cc/getcode" target="_blank" rel="external">友言</a>和<a href="http://open.weibo.com/widget/comments.php" target="_blank" rel="external">微博评论箱</a>两个选择不错，于是开始添加，先说说友言的配置吧。</p>
+        <p>昨天新搭好博客之后就一直想要添加一个留言版方便和大家交流（虽然跟没有人），我使用的是<a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="noopener">litten大神的yilia主题</a>，里面本身就帮助我们添加了畅言、多说、网易云跟帖、Disqus四种评论系统，我们只需要修改主题根目录下的<code>_config.yml</code>文件，配置<strong>appid</strong>就可以使用了，非常方便。</p>
+<p>但是。。。我的环境是gitpage+hexo，并且没有自己的域名，而畅言需要域名的备案号，无法申请；网易云跟帖判断github.io url已存在，无法申请；多说将在6月关闭，不推荐使用；Disqus在墙内使用不方便，不推荐使用。。。于是我只能另谋出路。<br><a id="more"></a><br>经过多方搜索，我发现<a href="http://www.uyan.cc/getcode" target="_blank" rel="noopener">友言</a>和<a href="http://open.weibo.com/widget/comments.php" target="_blank" rel="noopener">微博评论箱</a>两个选择不错，于是开始添加，先说说友言的配置吧。</p>
 <h3 id="友言踩坑"><a href="#友言踩坑" class="headerlink" title="友言踩坑"></a>友言踩坑</h3><p>其实友言没什么好坑的，直接注册后都不用邮箱认证就能自动分配到<strong>uid</strong>，然后获取到代码直接插入到界面中就可以了（不会修改主题代码的可以参考下面微博插入代码的方法）。但是我插入之后无论是本地测试还是更新到gitpage上测试都没有出现评论框，场面异常尴尬，查了很多资料也没有个解释，于是保留了代码并且给客服反馈了，等有了解决方案再来更新。</p>
-<h3 id="微博评论箱接入"><a href="#微博评论箱接入" class="headerlink" title="微博评论箱接入"></a>微博评论箱接入</h3><p>然后讲讲微博评论箱的接入。首先是去<a href="http://open.weibo.com/" target="_blank" rel="external">新浪微博开放平台</a>申请个帐号（当然直接微博登录也是可以的）。接着<a href="http://open.weibo.com/webmaster/add" target="_blank" rel="external">创建网站</a>：</p>
+<h3 id="微博评论箱接入"><a href="#微博评论箱接入" class="headerlink" title="微博评论箱接入"></a>微博评论箱接入</h3><p>然后讲讲微博评论箱的接入。首先是去<a href="http://open.weibo.com/" target="_blank" rel="noopener">新浪微博开放平台</a>申请个帐号（当然直接微博登录也是可以的）。接着<a href="http://open.weibo.com/webmaster/add" target="_blank" rel="noopener">创建网站</a>：</p>
 <p><img src="/imgs/weibo_create_web.png" alt="创建网站"></p>
 <p>这里填入网站名称和域名可以是gitpage的地址，例如:小明的博客；djming.github.io。</p>
 <p>验证方式我选择了第一种：在首页添加标签。首先复制上面这段代码，然后找到主页所在的页面，由于我之前没有接触过这类开发，查了很久文档才找到:<img src="/imgs/head_path.png" alt="head地址"><br>我们就是要修改这个<code>head.ejs</code>文件，这里面包含了我们博客页面的<code>&lt;head&gt;</code>标签内容，<code>hexo-theme-yilia</code>是我的主题文件夹名，如果用的不是这个主题可以自行去找，根据hexo官方文档的规则，主题目录应该是大致相同的。<br><img src="/imgs/weibo_config1.png" alt="微博配置"><br>在这里随便找个地方把<code>&lt;meta&gt;</code>标签插进去就行了，然后执行<code>hexo d</code>把我们的项目更新到gitpage，访问自己博客确认头信息已经被修改<img src="/imgs/weibo_confirm_head.png" alt="确认头信息已被修改"><br>接着就点击<code>验证并添加</code>进入了漫长的等待，不知是不是微博的服务器访问gitpage特别慢，这个过程我去查询了解决友言问题的各种资料，还顺便出去给朋友送了个东西，回来看见页面还卡在这，一刷新提示<code>网站名称已存在</code>才明白已经创建成功了，现在进入<code>我的应用</code>就可以看见自己刚才申请的网站啦！</p>
-<p>接下来我们回到<a href="http://open.weibo.com/widget/comments.php" target="_blank" rel="external">评论箱API</a>网站可以看到这里已经和我们第一次进来不同了，需要<strong>注意</strong>的是在这个页面的第一步第二部中配置的不同会直接导致第三步<code>复制代码</code>框中产生的代码不同，因为评论框的样式都被写在了WBML中，第三步复制代码需要增加XML命名空间，这里依然进入我们刚才编辑的<code>head.ejs</code>，将<code>&lt;html&gt;</code>标签修改为<code>&lt;html xmlns:wb=&quot;http://open.weibo.com/wb&quot;&gt;</code>，并且在head中添加<code>&lt;script src=&quot;http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=你的appkey&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;</code>，最后就是将评论箱的代码复制到评论箱应该出现的地方了，在我使用<code>yilia</code>主题中，我直接写进了<code>/theme/yilia/layout/_partial/article.ejs</code>的末尾，然后执行<code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo server</code>查看效果。<img src="/imgs/pinglun.png" alt="评论框"></p>
+<p>接下来我们回到<a href="http://open.weibo.com/widget/comments.php" target="_blank" rel="noopener">评论箱API</a>网站可以看到这里已经和我们第一次进来不同了，需要<strong>注意</strong>的是在这个页面的第一步第二部中配置的不同会直接导致第三步<code>复制代码</code>框中产生的代码不同，因为评论框的样式都被写在了WBML中，第三步复制代码需要增加XML命名空间，这里依然进入我们刚才编辑的<code>head.ejs</code>，将<code>&lt;html&gt;</code>标签修改为<code>&lt;html xmlns:wb=&quot;http://open.weibo.com/wb&quot;&gt;</code>，并且在head中添加<code>&lt;script src=&quot;http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=你的appkey&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;</code>，最后就是将评论箱的代码复制到评论箱应该出现的地方了，在我使用<code>yilia</code>主题中，我直接写进了<code>/theme/yilia/layout/_partial/article.ejs</code>的末尾，然后执行<code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo server</code>查看效果。<img src="/imgs/pinglun.png" alt="评论框"></p>
 <p>其实可以在hexo服务运行时修改配置文件以及.md文件，再刷新页面就可以看到效果了，不需要每次clean再重启。</p>
 <p>总结一下申请评论箱的坑：</p>
 <ol>
@@ -190,7 +194,7 @@
 </ol>
 <p>最后要说的是新浪的评论箱需要进行用户身份认证后再上线，其实也比畅言的好不了多少，不过对于没有域名也不打算买的小伙伴可以尝试一下，希望友言的问题能够尽快解决，如果你知道什么好的留言系统也请告诉我哟~</p>
 <hr>
-<p>写完以上文字后我才想起有个叫做<a href="https://livere.com" target="_blank" rel="external">来必力（来♂比利）</a>的评论系统忘记了，于是去测试了一下。。。异常简单，注册完成后插入代码到页面就行了，而且有个人免费，用户可以不登录留言。。。请忘了我上面写的东西吧。。。</p>
+<p>写完以上文字后我才想起有个叫做<a href="https://livere.com" target="_blank" rel="noopener">来必力（来♂比利）</a>的评论系统忘记了，于是去测试了一下。。。异常简单，注册完成后插入代码到页面就行了，而且有个人免费，用户可以不登录留言。。。请忘了我上面写的东西吧。。。</p>
 
       
 
@@ -340,7 +344,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 小明
+    		&copy; 2019 小明
     	</div>
 		<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
@@ -421,10 +425,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Kotlin</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
@@ -437,6 +437,14 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Kotlin</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
@@ -445,15 +453,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Android Studio</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">小技巧</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -474,6 +482,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">评论系统</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">摄影</a>
               </li>
              
               <li class="article-tag-list-item">
