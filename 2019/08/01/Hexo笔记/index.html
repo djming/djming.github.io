@@ -13,19 +13,19 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Hexo笔记 | 小明的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="常用命令1234&amp;gt; hexo new xxx   // 生成xxx.md文章&amp;gt; hexo g/generate [-d/—deploy] // 编译生成博客[并部署到服务器]&amp;gt; hexo server // 启动本地服务器（可用于预览）&amp;gt; hexo clean // 清理缓存 Deploy部署到Github失败的问题很久没更新微博，上次写了摄影笔记后满心欢喜地运行hexo">
+  <meta name="description" content="记录下使用Hexo中的一些技巧和问题。">
 <meta name="keywords" content="hexo,编程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo笔记">
 <meta property="og:url" content="http://yoursite.com/2019/08/01/Hexo笔记/index.html">
 <meta property="og:site_name" content="小明的博客">
-<meta property="og:description" content="常用命令1234&amp;gt; hexo new xxx   // 生成xxx.md文章&amp;gt; hexo g/generate [-d/—deploy] // 编译生成博客[并部署到服务器]&amp;gt; hexo server // 启动本地服务器（可用于预览）&amp;gt; hexo clean // 清理缓存 Deploy部署到Github失败的问题很久没更新微博，上次写了摄影笔记后满心欢喜地运行hexo">
+<meta property="og:description" content="记录下使用Hexo中的一些技巧和问题。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/imgs/hexo笔记.png">
-<meta property="og:updated_time" content="2019-07-31T16:47:20.573Z">
+<meta property="og:updated_time" content="2019-07-31T16:49:50.823Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo笔记">
-<meta name="twitter:description" content="常用命令1234&amp;gt; hexo new xxx   // 生成xxx.md文章&amp;gt; hexo g/generate [-d/—deploy] // 编译生成博客[并部署到服务器]&amp;gt; hexo server // 启动本地服务器（可用于预览）&amp;gt; hexo clean // 清理缓存 Deploy部署到Github失败的问题很久没更新微博，上次写了摄影笔记后满心欢喜地运行hexo">
+<meta name="twitter:description" content="记录下使用Hexo中的一些技巧和问题。">
 <meta name="twitter:image" content="http://yoursite.com/imgs/hexo笔记.png">
   
     <link rel="alternative" href="/atom.xml" title="小明的博客" type="application/atom+xml">
@@ -174,7 +174,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; hexo new xxx   // 生成xxx.md文章</span><br><span class="line">&gt; hexo g/generate [-d/—deploy] // 编译生成博客[并部署到服务器]</span><br><span class="line">&gt; hexo server // 启动本地服务器（可用于预览）</span><br><span class="line">&gt; hexo clean // 清理缓存</span><br></pre></td></tr></table></figure>
+        <p>记录下使用<strong>Hexo</strong>中的一些技巧和问题。<br><a id="more"></a></p>
+<h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; hexo new xxx   // 生成xxx.md文章</span><br><span class="line">&gt; hexo g/generate [-d/—deploy] // 编译生成博客[并部署到服务器]</span><br><span class="line">&gt; hexo server // 启动本地服务器（可用于预览）</span><br><span class="line">&gt; hexo clean // 清理缓存</span><br></pre></td></tr></table></figure>
 <h1 id="Deploy部署到Github失败的问题"><a href="#Deploy部署到Github失败的问题" class="headerlink" title="Deploy部署到Github失败的问题"></a>Deploy部署到Github失败的问题</h1><p>很久没更新微博，上次写了摄影笔记后满心欢喜地运行<code>hexo g &amp;&amp; hexo s</code>，本地预览效果完美，于是再次<code>hexo clean &amp;&amp; hexo g -d</code>，然后就去泡了杯咖啡，由于公寓里网速比较慢，摄影笔记这一篇博客图片又多（而且都是原图），上传很慢，但是等我玩了很久终于想起我还在上传博客时，得到了hexo的下列问题：</p>
 <blockquote>
 <p>RPC failed; curl 56 LibreSSL SSL_read: SSL_ERROR_SYSCALL, errno 60</p>
@@ -414,15 +415,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">区块链</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Asch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -438,10 +439,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Android Studio</a>
               </li>
              
@@ -450,7 +447,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技术</a>
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -458,15 +455,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编程</a>
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -483,6 +480,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">摄影</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">编程</a>
               </li>
             
             <div class="clearfix"></div>

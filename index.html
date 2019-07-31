@@ -172,34 +172,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; hexo new xxx   // 生成xxx.md文章</span><br><span class="line">&gt; hexo g/generate [-d/—deploy] // 编译生成博客[并部署到服务器]</span><br><span class="line">&gt; hexo server // 启动本地服务器（可用于预览）</span><br><span class="line">&gt; hexo clean // 清理缓存</span><br></pre></td></tr></table></figure>
-<h1 id="Deploy部署到Github失败的问题"><a href="#Deploy部署到Github失败的问题" class="headerlink" title="Deploy部署到Github失败的问题"></a>Deploy部署到Github失败的问题</h1><p>很久没更新微博，上次写了摄影笔记后满心欢喜地运行<code>hexo g &amp;&amp; hexo s</code>，本地预览效果完美，于是再次<code>hexo clean &amp;&amp; hexo g -d</code>，然后就去泡了杯咖啡，由于公寓里网速比较慢，摄影笔记这一篇博客图片又多（而且都是原图），上传很慢，但是等我玩了很久终于想起我还在上传博客时，得到了hexo的下列问题：</p>
-<blockquote>
-<p>RPC failed; curl 56 LibreSSL SSL_read: SSL_ERROR_SYSCALL, errno 60</p>
-</blockquote>
-<p><img src="/imgs/hexo笔记.png" alt="errors"></p>
-<p>本来以为是没有挂vpn，上传太慢导致的time out，于是挂上vpn再次发布，结果并没有改变，想到会不会是图片太多太大导致git失败的，因此把图片全都上传，本地使用链接（方法可参见下面的<code>使用微博做图床</code>），花了半个小时左右去改，完成后再次<code>hexo clean &amp;&amp; hexo g -d</code>，还是同样的报错。。。</p>
-<p>最后多方查证发现似乎是Git更新导致的一个问题（我果然很久没发布过博客了)，我这边的解决方法是修改<code>_config.yaml</code>的中的<code>deploy</code>配置地址，以前是<code>https</code>开头的Git项目地址，更换为<code>git</code>开头的即可：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/xxx/xxx.github.io.git</span><br><span class="line"> |</span><br><span class="line">git@github.com:xxx/xxx.github.io.git</span><br></pre></td></tr></table></figure>
-<p>有传言更新Git版本也可以解决，但是我应该是使用了最新版本的Git。</p>
-<h1 id="使用微博作为图床"><a href="#使用微博作为图床" class="headerlink" title="使用微博作为图床"></a>使用微博作为图床</h1><p>如上所说，在解决Deploy失败时一度以为是图片太多太大，导致Hexo部署的问题，当时想到两个解决办法：</p>
-<ol>
-<li>压缩图片再上传</li>
-<li>找个图床</li>
-</ol>
-<p>其实第二点一开始是没有想到的，但是在打开PS的那一刻突然想起自己有把图片发布到微博上，那么能不能直接使用微博上的图片链接呢？于是立刻行动，通过<strong>审查元素</strong>找到了一张图片的url，在本地立刻新建了一个markdown文件，通过<code>![from weibo](https://xxxx)</code>插入，在MacDown的预览界面是完美显示的，说明这个计划可行，于是花了半个小时把所有链接都爬了下来，然后手动修改之前Markdown里面的标签。完成后<code>hexo g &amp;&amp; hexo s</code>部署到本地，预览也是OK的，那没啥好说的了，<code>hexo d</code>发布！在发布成功后通过网址访问，发现一个令人猝不及防的问题：所有的微博图片都无法查看，链接失效，微博果然没有这么容易屈服。</p>
-<p>经过多方查证，是从2019年4月底开始，微博开启了防盗链功能，导致直接引用会失效，目前来说解决方法很简单，在生成的网页代码中添加如下头信息即可：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"referrer"</span> <span class="attr">content</span>=<span class="string">"no-referrer"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-<p>但是目前来说这个只是临时措施，什么时候会失效不可知，不过还是要感慨一下微博作为图床的好处：</p>
-<ol>
-<li>免费！</li>
-<li>每张图片最多20M的大容量</li>
-<li>无限图片</li>
-<li>速度快，我的博客中有一张是没有上传的微博的，因此还是包含在本地文件中，明显在加载这张图片的速度远远慢于加载微博图片。</li>
-<li>够稳定，这个没得说，只要不是鹿晗脱单、蔡徐坤发专辑之类的爆炸新闻，微博的服务器都是OK的。</li>
-</ol>
-<p>不过这张处理方式也有缺点，我Hexo中使用的<strong>莱比力评论系统</strong>无法工作了，说不定还是要搞个七牛云或者考虑上传低分辨率图片。</p>
-
+        <p>记录下使用<strong>Hexo</strong>中的一些技巧和问题。<br>
+        
+          <a class="article-more-a" href="/2019/08/01/Hexo笔记/#more">继续阅读 >></a>
+        
       
 
       
@@ -868,15 +844,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">区块链</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Asch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -892,10 +868,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Android Studio</a>
               </li>
              
@@ -904,7 +876,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技术</a>
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -912,15 +884,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编程</a>
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码分析</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -937,6 +909,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">摄影</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">编程</a>
               </li>
             
             <div class="clearfix"></div>
