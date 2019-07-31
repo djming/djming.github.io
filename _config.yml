@@ -68,7 +68,7 @@ theme: hexo-theme-yilia
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: https://github.com/djming/djming.github.io.git
+  repository: git@github.com:djming/djming.github.io.git
   branch: master
 
 jsonContent:
